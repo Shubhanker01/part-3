@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
 const PORT = 3001
+const morgan = require('morgan')
 app.use(express.json())
+app.use(morgan.token('type', function (req, res) { return res }))
 let phoneBook = [
     {
         "id": "1",
