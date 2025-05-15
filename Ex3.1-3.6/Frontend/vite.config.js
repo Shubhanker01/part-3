@@ -6,7 +6,8 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: 'http://localhost:3001',
+        target: 'https://phonebook-service-zu5j.onrender.com',
+        changeOrigin: true
       }
     },
   },
