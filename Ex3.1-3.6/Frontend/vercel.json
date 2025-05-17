@@ -1,10 +1,6 @@
 {
     "rewrites": [
         {
-            "source": "/api/:path(.*)",
-            "destination": "https://phonebook-service-zu5j.onrender.com/api"
-        },
-        {
             "source": "/(.*)",
             "destination": "/"
         }

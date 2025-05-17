@@ -4,7 +4,7 @@ const url = '/api'
 
 export const getAllPersons = async () => {
     try {
-        let response = await axios.get(`${url}/persons`)
+        let response = await axios.get(`${process.meta.env.VITE_PROD_SERVER}/persons`)
         let data = await response.data
         return data
     } catch (error) {
@@ -14,7 +14,7 @@ export const getAllPersons = async () => {
 
 export const addNewPerson = async (person) => {
     try {
-        let response = await axios.post(`${url}/addcontact`, person)
+        let response = await axios.post(`${process.meta.env.VITE_PROD_SERVER}/addcontact`, person)
         let data = await response.data
         return data
     } catch (error) {
@@ -24,7 +24,7 @@ export const addNewPerson = async (person) => {
 
 export const updateExistingPerson = async (id, updatedUser) => {
     try {
-        let response = await axios.put(`${url}/${id}`, updatedUser)
+        let response = await axios.put(`${process.meta.env.VITE_PROD_SERVER}/${id}`, updatedUser)
         let data = await response.data
         return data
     } catch (error) {
@@ -34,7 +34,7 @@ export const updateExistingPerson = async (id, updatedUser) => {
 
 export const deletePerson = async (id) => {
     try {
-        let response = await axios.delete(`${url}/${id}`)
+        let response = await axios.delete(`${process.meta.env.VITE_PROD_SERVER}/${id}`)
         let data = await response.data
         return data
     } catch (error) {
