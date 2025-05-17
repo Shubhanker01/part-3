@@ -5,10 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      "/api": {
-        target: 'https://phonebook-service-zu5j.onrender.com',
-        changeOrigin: true
-      }
+      "/api": 'https://phonebook-service-zu5j.onrender.com'
     },
   },
   plugins: [react()],
