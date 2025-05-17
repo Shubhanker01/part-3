@@ -17,6 +17,7 @@ function App() {
   // fetch data from server
   useEffect(() => {
     getAllPersons().then((data) => {
+      console.log(data)
       setPersons(data)
     }).catch((err) => {
       console.log(err)
