@@ -1,7 +1,9 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 3001
 const cors = require('cors')
+const connectToMongo = require('./mongo')
 app.use(express.json())
 app.use(cors())
 
@@ -94,4 +96,6 @@ app.post('/api/addcontact', (req, res) => {
 app.listen(PORT, () => {
     console.log(`App is listening on port: ${PORT}`)
 })
+
+connectToMongo()
 
