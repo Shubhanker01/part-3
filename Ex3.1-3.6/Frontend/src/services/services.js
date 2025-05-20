@@ -23,7 +23,7 @@ export const addNewPerson = async (person) => {
 
 export const updateExistingPerson = async (id, updatedUser) => {
     try {
-        let response = await axios.put(`${import.meta.env.VITE_PROD_SERVER}/api/${id}`, updatedUser)
+        let response = await axios.put(`${import.meta.env.VITE_PROD_SERVER}/update/${id}`, updatedUser)
         let data = await response.data
         return data
     } catch (error) {

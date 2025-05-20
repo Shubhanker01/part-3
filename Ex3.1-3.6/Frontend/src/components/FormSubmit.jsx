@@ -36,11 +36,11 @@ function FormSubmit({ persons, setPersons, newName, setNewName, phone, setPhone,
                     }
                 })
                 console.log(user)
-                let id = user[0].id
-                updateExistingPerson(id, newObj).then((res) => {
+                let id = user[0]._id
+                updateExistingPerson(id, { number: newObj.number }).then((res) => {
                     console.log(res)
                     setPersons(persons.map((person) => {
-                        if (person.id === res.id) {
+                        if (person._id === res._id) {
                             person.number = res.number
                         }
                         return person

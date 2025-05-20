@@ -9,9 +9,6 @@ app.use(cors())
 const phoneBook = require('./schema')
 const errorHandler = require('./errorHandler')
 
-let generateRandom = () => {
-    return String(Math.floor(Math.random() * (100000 - 5)) + 5)
-}
 // fetching all the person records
 app.get('/api/persons', async (req, res) => {
     let data = await phoneBook.find({})
@@ -25,13 +22,18 @@ app.get('/api/info', (req, res) => {
 })
 
 // displaying single phonebook
-app.get('/api/persons/:id', (req, res) => {
-    let id = req.params.id
-    let person = phoneBook.find((person) => person.id === id)
-    if (!person) {
-        return res.status(404).send("Person not found")
+app.get('/api/persons/:id', async (req, res) => {
+    try {
+        let id = req.params.id
+        let person = await phoneBook.findById(id)
+        if (!person) {
+            return res.status(404).send("Person not found")
+        }
+        return res.json(person)
+    } catch (error) {
+        console.log(error)
     }
-    return res.json(person)
+
 })
 
 // deleting single phonebook
@@ -46,30 +48,36 @@ app.delete('/api/delete/:id', async (req, res) => {
 
 })
 
-// function checkDuplicateName(name) {
-//     for (let i = 0; i < phoneBook.length; i++) {
-//         if (phoneBook[i].name === name) {
-//             return true
-//         }
-//     }
-//     return false
-// }
 // adding a new contact
 app.post('/api/addcontact', async (req, res) => {
     let body = req.body
     if (!body.name || !body.number) {
         return res.status(400).send("Please enter full information")
     }
-    // if (checkDuplicateName(body.name)) {
-    //     return res.status(400).send("Name must be unique")
-    // }
-    // let id = generateRandom()
+
     let contact = {
         name: body.name,
         number: body.number
     }
     await phoneBook.create(contact)
     return res.json(contact)
+})
+
+// update existing account
+app.put('/api/update/:id', async (req, res) => {
+    try {
+        let id = req.params.id
+        let number = req.body.number
+        let user = await phoneBook.findById(id)
+        if (!user) {
+            return res.status(404).send("User not found")
+        }
+        user.number = number
+        await user.save()
+        return res.json(user)
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 app.use(errorHandler)

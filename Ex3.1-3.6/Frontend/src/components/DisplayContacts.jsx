@@ -8,7 +8,7 @@ function DisplayContacts({ persons, setPersons }) {
             {
                 persons.map((person) => {
                     return (
-                        <div key={person.id}>
+                        <div key={person._id}>
                             <p>{person.name} {person.number}</p>
                             <Delete person={person} persons={persons} setPersons={setPersons}/>
                         </div>
