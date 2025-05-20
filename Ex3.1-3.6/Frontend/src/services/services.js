@@ -13,7 +13,7 @@ export const getAllPersons = async () => {
 
 export const addNewPerson = async (person) => {
     try {
-        let response = await axios.post(`${import.meta.env.VITE_PROD_SERVER}/api/addcontact`, person)
+        let response = await axios.post(`${import.meta.env.VITE_PROD_SERVER}/addcontact`, person)
         let data = await response.data
         return data
     } catch (error) {
@@ -33,7 +33,7 @@ export const updateExistingPerson = async (id, updatedUser) => {
 
 export const deletePerson = async (id) => {
     try {
-        let response = await axios.delete(`${import.meta.env.VITE_PROD_SERVER}/api/${id}`)
+        let response = await axios.delete(`${import.meta.env.VITE_PROD_SERVER}/delete/${id}`)
         let data = await response.data
         return data
     } catch (error) {

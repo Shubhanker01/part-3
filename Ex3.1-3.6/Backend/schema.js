@@ -4,7 +4,9 @@ const { Schema } = mongoose
 
 const phonebook = new Schema({
     name: {
-        type: String
+        type: String,
+        minLength:3,
+        required:true
     },
     number: {
         type: String

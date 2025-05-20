@@ -59,8 +59,8 @@ app.post('/api/addcontact', async (req, res) => {
         name: body.name,
         number: body.number
     }
-    await phoneBook.create(contact)
-    return res.json(contact)
+    let data = await phoneBook.create(contact)
+    return res.json(data)
 })
 
 // update existing account

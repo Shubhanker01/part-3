@@ -1,7 +1,7 @@
 import React from 'react'
 import Delete from './Delete'
 
-function DisplayContacts({ persons, setPersons }) {
+function DisplayContacts({ persons, setPersons,setSuccessMessage,setType }) {
 
     return (
         <>
@@ -10,7 +10,7 @@ function DisplayContacts({ persons, setPersons }) {
                     return (
                         <div key={person._id}>
                             <p>{person.name} {person.number}</p>
-                            <Delete person={person} persons={persons} setPersons={setPersons}/>
+                            <Delete setSuccessMessage={setSuccessMessage} setType={setType} person={person} persons={persons} setPersons={setPersons}/>
                         </div>
                     )
                 })

@@ -32,7 +32,7 @@ function App() {
         <h2>Add a new</h2>
         <FormSubmit persons={persons} setPersons={setPersons} newName={newName} setNewName={setNewName} phone={phone} setPhone={setPhone} setSuccessMessage={setSuccessMessage} setType={setType} setError={setError} />
         <h2>Numbers</h2>
-        <DisplayContacts persons={persons} setPersons={setPersons} />
+        <DisplayContacts persons={persons} setPersons={setPersons} setSuccessMessage={setSuccessMessage} setType={setType}/>
       </div>
     </>
   )
